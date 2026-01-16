@@ -17,6 +17,10 @@ The project demonstrates real-world concepts such as:
 
 This project is designed to reflect **enterprise-grade deployment practices** and serves as a strong portfolio project for **DevOps, Cloud, and Backend Engineering roles**.
 
+## Architecture Diagram
+
+![alt text](Screenshots/architecture.png)
+
 ---
 
 ## 🧱 High-Level Architecture
@@ -114,3 +118,46 @@ Logout and login again to apply group changes.
 ```
 sudo apt install -y docker-compose
 ```
+### Clone the Repository
+
+```
+git clone https://github.com/vanuhanda/ecommerce-microservices-docker-compose.git
+cd <commerce-microservices-docker-compose>
+```
+### Start the Application
+```
+docker compose up -d
+```
+Docker Compose will automatically:
+
+Pull images from Docker Hub
+
+Create networks and volumes
+
+Start services in the correct dependency order
+
+### Verify Running Containers
+```
+docker ps
+```
+### Application Access
+Replace <EC2_PUBLIC_IP:4000> with your instance’s public IP.
+| Service                | URL                           |
+| ---------------------- | ----------------------------- |
+| Web UI                 | `http://<EC2_PUBLIC_IP>:4000` |
+| Profile Management API | `http://<EC2_PUBLIC_IP>:3003` |
+| Product Catalog API    | `http://<EC2_PUBLIC_IP>:3001` |
+| Inventory API          | `http://<EC2_PUBLIC_IP>:3002` |
+| Order Management API   | `http://<EC2_PUBLIC_IP>:9090` |
+| Shipping API           | `http://<EC2_PUBLIC_IP>:8080` |
+
+The remaining URL will only work if the ports are open in AWS EC2 security group. 
+
+## 🧪 Key Concepts Demonstrated
+
+- **Docker Compose orchestration**
+- **Microservices networking via Docker DNS**
+- **Stateful containers with persistent volumes**
+- **Multi-database architecture**
+- **Cloud deployment on AWS EC2**
+- **End-to-end service dependency management**
