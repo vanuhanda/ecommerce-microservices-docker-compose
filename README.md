@@ -3,7 +3,7 @@ E-commerce microservices platform deployed with Docker Compose on AWS EC2, featu
 
 ## 📂 Repo Layout
 
-```text
+```
 .
 ├── Screenshots/
 │   ├── architecture.png
@@ -25,7 +25,7 @@ E-commerce microservices platform deployed with Docker Compose on AWS EC2, featu
 │   └── profile-management.png
 └── README.md
 └── docker-compose.yml
-
+```
 
 
 # 🛒 E-Commerce Microservices Platform (Docker Compose + AWS EC2)
@@ -166,10 +166,13 @@ sudo apt install -y docker-compose
 docker -v
 docker-compose -v
 ```
+![alt text](Screenshots/dockerversion.png)
+
 ### Clone the Repository
 
 ```
 git clone https://github.com/vanuhanda/ecommerce-microservices-docker-compose.git
+
 cd <commerce-microservices-docker-compose>
 ```
 ### Start the Application
@@ -224,8 +227,7 @@ The remaining URL will only work if the ports are open in AWS EC2 security group
 
 The entire application stack is orchestrated using **Docker Compose**.
 
-📄 Compose file location:  
-➡️ [D:\GIT Repos\ecommerce-microservices-docker-compose\docker-compose.yml](docker-compose.yml)
+
 
 ```
 version: "3"
@@ -399,6 +401,7 @@ The following screenshots demonstrate each running service and its functionality
 ![alt text](Screenshots/signupsuccessful.png)
 
 ### 🛒 E-Commerce UI Microservice
+Login using Email and Password
 
 ![alt text](Screenshots/ecommercecontainer.png)
 
@@ -432,3 +435,11 @@ Go to Product Catalog and try adding any product.
 📁 All screenshots are stored under the `Screenshots/` directory.
 
 
+## Conclusion
+
+
+This project demonstrates a complete, production-oriented implementation of a containerized e-commerce platform using Docker Compose and a microservices architecture. Each service is independently deployable, communicates through Docker’s internal networking, and uses dedicated databases with persistent volumes to ensure data durability.
+
+The deployment on AWS EC2 validates real-world cloud readiness, covering service orchestration, inter-service dependency management, and operational verification through Docker and Docker Compose commands. The architecture emphasizes clear separation of concerns, scalability, and maintainability, closely reflecting patterns used in modern cloud-native applications.
+
+Overall, this repository serves as a practical reference for designing, deploying, and operating multi-service applications using Docker Compose, and provides a strong foundation for future enhancements such as container orchestration with Kubernetes, centralized logging, monitoring, and CI/CD integration.
