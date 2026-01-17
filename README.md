@@ -220,9 +220,6 @@ The remaining URL will only work if the ports are open in AWS EC2 security group
 - **End-to-end service dependency management**
 
 
-📄 A detailed architecture explanation is available here:  
-
-
 ## 🐳 Docker Compose Configuration
 
 The entire application stack is orchestrated using **Docker Compose**.
@@ -398,7 +395,7 @@ The following screenshots demonstrate each running service and its functionality
 
 ### 🛒 Signup Successfull
 
-![alt text](Screenshots/signupsuccessful.png)
+![alt text](Screenshots/signupsuccessfull.png)
 
 ### 🛒 E-Commerce UI Microservice
 Login using Email and Password
