@@ -183,7 +183,7 @@ docker-compose -v
 ```
 git clone https://github.com/vanuhanda/ecommerce-microservices-docker-compose.git
 
-cd <commerce-microservices-docker-compose>
+cd <ecommerce-microservices-docker-compose>
 ```
 ### Start the Application
 ```
@@ -218,7 +218,7 @@ Replace <EC2_PUBLIC_IP:4000> with your instance’s public IP.
 | Order Management API   | `http://<EC2_PUBLIC_IP>:9090` |
 | Shipping API           | `http://<EC2_PUBLIC_IP>:8080` |
 
-The remaining URL will only work if the ports are open in AWS EC2 security group. 
+The remaining URL will only work if the required ports are allowed through the AWS EC2 security group. 
 
 ## 🧪 Key Concepts Demonstrated
 
