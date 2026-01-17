@@ -32,6 +32,7 @@ E-commerce microservices platform deployed with Docker Compose on AWS EC2, featu
 │   └── signup.png
 │   └── signupsuccessful.png
 │   └── profile-management.png
+└── Architecture.md
 └── README.md
 └── docker-compose.yml
 ```
