@@ -5,6 +5,15 @@ E-commerce microservices platform deployed with Docker Compose on AWS EC2, featu
 
 ```
 .
+├── docs/
+│   ├── contact-support-team/
+│   ├── ecommerce-ui/
+│   ├── order-management/
+│   ├── product-catalog/
+│   ├── product-inventory/ 
+│   ├── profile-management/
+│   ├── shipping-and-handling/
+│   ├── image-build-and-push.md│
 ├── Screenshots/
 │   ├── architecture.png
 │   ├── cartcontainer.png
