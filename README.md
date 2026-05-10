@@ -240,8 +240,9 @@ The entire application stack is orchestrated using **Docker Compose**.
 version: "3"
 services:
   ecommerce-ui:
-    image:  vanuhanda/ecommerce-ui
+    image: vanuhanda/ecommerce-ui
     container_name: ecommerce-ui
+    restart: unless-stopped
     ports:
       - "4000:4000"
     environment:
@@ -258,9 +259,11 @@ services:
       - order-management
       - shipping-and-handling
       - contact-support-team
+
   contact-support-team:
     image: vanuhanda/contact-support-team:2.0.0
     container_name: contact-support-team
+    restart: unless-stopped
     ports:
       - "8000:8000"
     depends_on:
@@ -270,14 +273,17 @@ services:
       - MONGODB_PORT=27017
       - MONGODB_DATABASE=contact_support
 
-  mongodb-contact-support: ## mongodb will use container port 27017
+  mongodb-contact-support:
     image: mongo
     container_name: mongodb-contact-support
+    restart: unless-stopped
     volumes:
       - mongodb_contact_support_data:/data/db
+
   shipping-and-handling:
     image: vanuhanda/shipping-and-handling:2.0.0
     container_name: shipping-and-handling
+    restart: unless-stopped
     ports:
       - "8080:8080"
     depends_on:
@@ -285,16 +291,19 @@ services:
     environment:
       - MONGO_URI=mongodb://mongodb-shipping:27017
 
-  mongodb-shipping: ## mongodb will use container port 27017
+  mongodb-shipping:
     image: mongo
     container_name: mongodb-shipping
+    restart: unless-stopped
     ports:
       - "27020:27017"
     volumes:
       - mongodb_shipping_data:/data/db
+
   product-catalog:
     image: vanuhanda/product-catalog:2.0.0
     container_name: product-catalog
+    restart: unless-stopped
     ports:
       - "3001:3001"
     depends_on:
@@ -303,14 +312,18 @@ services:
       - MONGODB_HOST=mongodb-product-catalog
       - MONGODB_PORT=27017
       - MONGODB_DATABASE=product_catalog
-  mongodb-product-catalog: ## mongodb will use container port 27017
+
+  mongodb-product-catalog:
     image: mongo
     container_name: mongodb-product-catalog
+    restart: unless-stopped
     volumes:
       - mongodb_product_catalog_data:/data/db
+
   order-management:
     image: vanuhanda/order-management:2.0.0
     container_name: order-management
+    restart: unless-stopped
     depends_on:
       - mongodb-order-management
     ports:
@@ -320,16 +333,20 @@ services:
       - PRODUCT_CATALOG_API_HOST=http://product-catalog
       - SHIPPING_HANDLING_API_HOST=http://shipping-and-handling
       - SPRING_DATA_MONGODB_URI=mongodb://mongodb-order-management:27017/order_management
-  mongodb-order-management: ## mongodb will use container 27017
+
+  mongodb-order-management:
     image: mongo
     container_name: mongodb-order-management
+    restart: unless-stopped
     ports:
       - "27021:27017"
     volumes:
       - mongodb_order_management_data:/data/db
+
   product-inventory:
     image: vanuhanda/product-inventory:2.0.0
     container_name: product-inventory
+    restart: unless-stopped
     depends_on:
       - postgres_product_inventory
     ports:
@@ -340,18 +357,22 @@ services:
       - POSTGRES_DB=product_inventory
       - POSTGRES_USER=inventory_user
       - POSTGRES_PASSWORD=inventory_password
-  postgres_product_inventory: ## postgres will run on container port 5432
+
+  postgres_product_inventory:
     image: postgres
     container_name: postgres_product_inventory
+    restart: unless-stopped
     environment:
       - POSTGRES_DB=product_inventory
       - POSTGRES_USER=inventory_user
       - POSTGRES_PASSWORD=inventory_password
     volumes:
       - postgres_product_inventory_data:/var/lib/postgresql
+
   profile-management:
     image: vanuhanda/profile-management:2.0.0
     container_name: profile-management
+    restart: unless-stopped
     ports:
       - "3003:3003"
     depends_on:
@@ -362,9 +383,11 @@ services:
       - MYSQL_DATABASE=profile_management
       - MYSQL_USER=profile_user
       - MYSQL_PASSWORD=profile_password
-  mysql_profile_management: ## will run on container 3306
+
+  mysql_profile_management:
     image: mysql:8.0
     container_name: mysql_profile_management
+    restart: unless-stopped
     environment:
       - MYSQL_DATABASE=profile_management
       - MYSQL_USER=profile_user
@@ -380,7 +403,8 @@ volumes:
   mongodb_order_management_data:
   mysql_profile_management_data:
   postgres_product_inventory_data:
-  ```
+
+```
 
 Key highlights:
 - Single Docker network for inter-service communication
